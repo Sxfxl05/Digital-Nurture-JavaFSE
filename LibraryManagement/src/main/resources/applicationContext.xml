@@ -13,13 +13,18 @@
     <!-- Instructs Spring to auto-discover classes marked with @Service, @Repository, etc. -->
     <context:component-scan base-package="com.library" />
 
+    <!-- Enables AspectJ Auto-Proxying so Spring wraps beans in proxy wrappers -->
+    <aop:aspectj-autoproxy />
+
     <!-- Keeping our AOP Logging configuration from Exercise 3 & 8 intact -->
     <bean id="loggingAspect" class="com.library.aspect.LoggingAspect" />
 
+    <!-- AOP Configuration to trap custom annotated methods -->
     <aop:config>
         <aop:aspect ref="loggingAspect">
+            <!-- Intercepts only methods explicitly marked with @TrackExecutionTime -->
             <aop:around method="logExecutionTime" 
-                        pointcut="execution(* com.library.service.*.*(..))" />
+                        pointcut="@annotation(com.library.annotation.TrackExecutionTime)" />
         </aop:aspect>
     </aop:config>
 
