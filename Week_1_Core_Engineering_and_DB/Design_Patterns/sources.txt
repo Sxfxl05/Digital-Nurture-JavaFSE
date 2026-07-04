@@ -1,0 +1,1 @@
+C:\Users\Lenovo\Desktop\Digital-Nurture-JavaFSE\Week_1_Core_Engineering_and_DB\Design_Patterns\src\com\patterns\singleton\Logger.java
